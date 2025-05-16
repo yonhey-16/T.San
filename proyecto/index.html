@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Emojis por mensaje</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        color: #333;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 2rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(102, 166, 255, 0.4);
+        max-width: 400px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 1.5rem;
+        color: #1a237e;
+        font-weight: 700;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #66a6ff;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        outline: none;
+      }
+      input[type="text"]:focus {
+        border-color: #1a237e;
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 12px 25px;
+        background-color: #1a237e;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 5px 15px rgba(26, 35, 126, 0.6);
+      }
+      button:hover {
+        background-color: #3949ab;
+      }
+
+      #respuesta {
+        margin-top: 25px;
+        font-size: 1.2rem;
+        color: #1a237e;
+        font-weight: 600;
+        min-height: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Escribe algo y te responderé con algo curioso 👀</h2>
+      <input type="text" id="mensaje" placeholder="Escribe algo..." />
+      <button id="enviar">Enviar</button>
+      <div id="respuesta"></div>
+    </div>
+
+    <script>
+      const palabrasClave = {
+        gato: ['🐱', '¿Sabías que los gatos duermen unas 16 horas al día? ¡Qué vida!'],
+  pizza: ['🍕', 'La pizza fue considerada vegetal en EE.UU. por un tiempo. 😆'],
+  noche: ['🌙', 'La noche es perfecta para soñar... o para comer cereal.'],
+  perro: ['🐶', 'Un perro puede oler tus emociones. ¡Son increíbles!'],
+  sol: ['☀️', '¡No olvides tu protector solar!'],
+  escuela: ['🏫', 'Ánimo, cada día aprendes algo nuevo.'],
+  robot: ['🤖', '¡Yo también soy uno! Pero no muerdo.'],
+  cine: ['🎬', 'Una buena película puede cambiarte el día.'],
+  lluvia: ['🌧️', 'Perfecto para una mantita y un chocolate caliente.'],
+  luna: ['🌕', 'La luna influye en las mareas y en tus sueños.'],
+  café: ['☕', 'El café contiene más de 1000 compuestos diferentes.'],
+  mariposa: ['🦋', 'Las mariposas pueden saborear con sus patas.'],
+  libro: ['📚', 'Leer activa muchas zonas del cerebro, ¡es un gimnasio mental!'],
+  playa: ['🏖️', 'El sonido del mar puede ayudar a reducir el estrés.'],
+  estrella: ['⭐', 'Las estrellas que ves pueden haber muerto hace millones de años.'],
+  música: ['🎵', 'Escuchar música puede mejorar tu estado de ánimo al instante.'],
+  chocolate: ['🍫', 'El chocolate libera endorfinas, te hace sentir feliz.'],
+  árbol: ['🌳', 'Los árboles pueden comunicarse entre sí a través de sus raíces.'],
+  montaña: ['⛰️', 'Las montañas más altas pueden cambiar el clima local.'],
+  gatoNegro: ['🐈‍⬛', 'En algunas culturas, los gatos negros traen buena suerte.'],
+  cohete: ['🚀', 'El primer hombre en la luna fue Neil Armstrong en 1969.'],
+  pizzaMargarita: ['🍕', 'La pizza Margarita fue creada en honor a la reina Margarita de Italia.'],
+  globos: ['🎈', 'Los globos de helio pueden elevarse hasta 10 km en la atmósfera.'],
+  unicornio: ['🦄', 'El unicornio es símbolo de pureza y magia en muchas leyendas.'],
+  solLuna: ['🌞🌜', 'El sol y la luna son símbolos opuestos que se complementan.'],
+  sonrisa: ['😊', 'Sonreír puede mejorar tu salud y contagiar alegría.'],
+  robotDanza: ['🤖💃', 'Los robots también pueden aprender a bailar con inteligencia artificial.'],
+  camara: ['📷', 'La primera foto permanente se tomó en 1826, ¡imagina lo antigua que es!'],
+  avion: ['✈️', 'El vuelo comercial comenzó en 1914 con solo 1 pasajero.']
+      };
+
+      document.getElementById('enviar').addEventListener('click', () => {
+        const texto = document.getElementById('mensaje').value.toLowerCase();
+        const respuestaDiv = document.getElementById('respuesta');
+
+        let respuesta = 'Hmm... no encontré nada interesante 😅';
+        for (const clave in palabrasClave) {
+          if (texto.includes(clave)) {
+            const [emoji, mensaje] = palabrasClave[clave];
+            respuesta = `${mensaje} ${emoji}`;
+            break;
+          }
+        }
+
+        respuestaDiv.textContent = respuesta;
+      });
+    </script>
+  </body>
+</html>
